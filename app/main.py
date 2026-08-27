@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from models import todo
+from app.models import todo
 app = FastAPI()
 
 todos = [
