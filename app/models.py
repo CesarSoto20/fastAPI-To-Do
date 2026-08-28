@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class todo(BaseModel):
+class Todo(BaseModel):
     id: int
     title: str
     description: str
