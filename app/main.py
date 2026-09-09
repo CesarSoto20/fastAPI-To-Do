@@ -18,6 +18,7 @@ def greet():
 
 @app.get("/todos")
 def get_all_todos():
+    
     return todos
 
 @app.get("/todo/{id}")
