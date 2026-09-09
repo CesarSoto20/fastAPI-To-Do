@@ -1,8 +1,13 @@
 from fastapi import FastAPI
 from app.models import Todo
-from database import session
+from app.database import SessionLocal, engine
+from app import database_models 
+
+
 
 app = FastAPI()
+
+database_models.Base.metadata.create_all(bind=engine)
 
 
 todos = [
@@ -18,7 +23,7 @@ def greet():
 
 @app.get("/todos")
 def get_all_todos():
-    db = session()
+    db = SessionLocal()
     db.query()
     return todos
 
