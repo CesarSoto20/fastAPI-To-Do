@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.models import Todo
-
+from database import session
 
 app = FastAPI()
 
@@ -18,7 +18,8 @@ def greet():
 
 @app.get("/todos")
 def get_all_todos():
-    
+    db = session()
+    db.query()
     return todos
 
 @app.get("/todo/{id}")
