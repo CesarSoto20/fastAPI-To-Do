@@ -17,14 +17,26 @@ todos = [
     Todo(id=4, title="Friday", description="Go for a 20min run", completed=False)
 ]
     
+def init_db():
+    db = SessionLocal()
+
+    count =  db.query(database_models.Todo).count
+
+    if count == 0:
+        for todo in todos:
+            db.add(database_models.Todo(**todo.model_dump()))
+        db.commit()
+
+init_db()
+
 @app.get("/")
 def greet():
     return "Hello to the user"
 
 @app.get("/todos")
 def get_all_todos():
-    db = SessionLocal()
-    db.query()
+    # db = SessionLocal()
+    # db.query()
     return todos
 
 @app.get("/todo/{id}")
